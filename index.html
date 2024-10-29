@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Direct Download Almost Anything</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="download,movies,games,music,softwares,epub,ebooks,pdf,mp3,songs,direct download">
+	<meta name="description" content="Find direct download links for about anything. TV Series, Movies, Books, music, softwares, games anything. Take advantage of powerful advanced search of Google.">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script type="text/javascript">
+		var logos = {
+			google: 'data:image/png;google_logo',
+			googol: 'data:image/png;base64,googol_logo',
+			startpage: 'data:image/png;base64,start_page_logo',
+			searx: 'data:image/png;base64,searx_logo',
+			filepursuit: 'data:image/png;filepursuit_logo'
+		};
+		function setFiletype(fileType, buttonData, resType, glyph) {
+			var defaultString = 'Search anything';
+			$("#query").prop('placeholder', defaultString + ' eg. ' + buttonData);
+			$("#fileType").val(fileType);
+			$("#resType").val(resType);
+			$("#ddbutton").html('<span class="glyphicon glyphicon-' + glyph + '" aria-hidden="true"></span> ' + buttonData + ' <span class="caret"></span>');
+    		$("#query").focus();
+		}
+		function setEngine(engine) {
+			$("#engine").val(engine);
+			$("#logo").prop('src', logos[engine]);
+			$("#egbutton").html('<span class="glyphicon glyphicon-search" aria-hidden="true"></span> ' + engine + ' <span class="caret"></span>');
+    		$("#query").focus();
+		}
+		function startSearch(engine = '') {
+			var query = document.getElementById('query').value;
+			var fileType = document.getElementById('fileType').value;
+			var resType = document.getElementById('resType').value;
+			engine = document.getElementById('engine').value;
+			var finalQuery = fileType ? `${query} +(${fileType})` : query;
+			finalQuery += " -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) intitle:index.of -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|index-of|wallywashis|downloadmana)";
+			var url = {
+				google: `https://www.google.com/search?q=${encodeURIComponent(finalQuery)}`,
+				googol: `https://googol.warriordudimanche.net/?q=${encodeURIComponent(finalQuery)}`,
+				startpage: `https://www.startpage.com/do/dsearch?query=${encodeURIComponent(finalQuery)}`,
+				searx: `https://searx.me/?q=${encodeURIComponent(finalQuery)}`,
+				filepursuit: `https://filepursuit.com/search/${query.replace(/ /g, "+")}/type/${resType}`
+			}[engine];
+			window.open(url, '_blank');
+		}
+	</script>
+	<style type="text/css">
+		body { text-align: center; background-color: #f8f9fa; }
+		.container { margin-top: 30px; }
+		.input-group { max-width: 600px; margin: 0 auto; }
+		.black-background { background-color: #000; }
+		.white { color: #fff; }
+		#egbutton, #ddbutton { text-transform: capitalize; }
+		.hidden-xs { display: none; }
+		@media (min-width: 768px) { .hidden-xs { display: block; } }
+	</style>
+</head>
+<body onload="openDropdown();">
+	<pre align="center" class="hidden-xs">
+		<img src="google_logo_link_here" alt="" id="logo" /> 
+		<div>Get direct download links for almost anything.</div>
+	</pre>
+	<div class="visible-xs">
+		<h1>Open Directory Search</h1>
+		<div>Get direct download links for almost anything.</div>
+		<hr />
+	</div>
+
+	<div class="container">
+		<form id="searchForm" onsubmit="event.preventDefault(); startSearch();">
+			<input type="hidden" name="fileType" id="fileType" value="">
+			<input type="hidden" name="resType" id="resType" value="">
+			<input type="hidden" name="engine" id="engine" value="google">
+			<div class="input-group">
+				<div class="input-group-btn">
+					<button id="ddbutton" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose Filetype <span id="message" class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li><a href="#" onclick="setFiletype('mkv|mp4|avi|mov|mpg|wmv|divx|mpeg', 'TV/Movies', 'video', 'film')">TV/Movies</a></li>
+						<li><a href="#" onclick="setFiletype('MOBI|CBZ|CBR|CBC|CHM|EPUB|FB2|LIT|LRF|ODT|PDF|PRC|PDB|PML|RB|RTF|TCR|DOC|DOCX', 'Books', 'ebook', 'book')">Books</a></li>
+						<li><a href="#" onclick="setFiletype('mp3|wav|ac3|ogg|flac|wma|m4a|aac|mod', 'Music', 'audio', 'music')">Music</a></li>
+						<li><a href="#" onclick="setFiletype('exe|iso|dmg|tar|7z|bz2|gz|rar|zip|apk', 'Software/ISO/DMG/Games', 'archive', 'cd')">Software/Games</a></li>
+						<li><a href="#" onclick="setFiletype('jpg|png|bmp|gif|tif|tiff|psd', 'Images', 'picture', 'picture')">Images</a></li>
+						<li><a href="#" onclick="setFiletype('-1', 'Other', 'all', 'asterisk')">Other</a></li>
+					</ul>
+				</div>
+				<div class="input-group-btn">
+					<button id="egbutton" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Google <span id="message" class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li><a href="#" onclick="setEngine('google')">Google</a></li>
+						<li><a href="#" onclick="setEngine('googol')">Googol</a></li>
+						<li><a href="#" onclick="setEngine('startpage')">Startpage</a></li>
+						<li><a href="#" onclick="setEngine('searx')">Searx</a></li>
+						<li><a href="#" onclick="setEngine('filepursuit')">FilePursuit</a></li>
+					</ul>
+				</div>
+				<input type="text" id="query" class="form-control" placeholder="Search anything e.g. The.Blacklist.S01.E01">
+				<span class="input-group-btn">
+					<a href="#" onclick="startSearch();" class="btn btn-default black-background white"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+				</span>
+			</div>
+		</form>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
