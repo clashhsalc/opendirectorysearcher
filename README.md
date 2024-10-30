@@ -19,7 +19,7 @@ A web interface for finding direct download links. This tool helps users find pu
   - Images (jpg, png, bmp, etc.)
   - Other file types
 
-## 🚀 Usage
+## Usage
 
 1. Select your desired file type from the dropdown menu
 2. Choose your preferred search engine
@@ -32,7 +32,7 @@ The tool will automatically:
 - Open results in a new tab
 
 
-## 🔰 Note
+## Note
 
 This tool is designed to help find publicly available files. Illegal Content might be linked, but is in no way promoted or endorsed. 
 
