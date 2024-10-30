@@ -37,4 +37,4 @@ The tool will automatically:
 This tool is designed to help find publicly available files. Illegal Content might be linked, but is in no way promoted or endorsed. 
 
 ---
-<p style="text-align:center;">Made with ❤️</p>
+Made with ❤️
